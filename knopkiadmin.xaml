@@ -13,17 +13,33 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="397*"/>
-            <ColumnDefinition Width="403*"/>
+            <ColumnDefinition Width="131*"/>
+            <ColumnDefinition Width="669*"/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" Content="Клиенты" x:Name="BtnClient" Click="BtnClient_Click" HorizontalAlignment="Center"  VerticalAlignment="Center"  Grid.Row="1" />
-        <Button Grid.Column="1" Content="Группы" x:Name="BtnGroup" Click="BtnGroup_Click"  HorizontalAlignment="Center"  VerticalAlignment="Center"  Grid.Row="1" />
-        <Button Grid.Column="0" Content="Уроки" x:Name="BtnLesson" Click="BtnLesson_Click"  HorizontalAlignment="Center"  VerticalAlignment="Center"   Grid.Row="2"  />
-        <Button Grid.Column="1" Content="Посещаемость" x:Name="BtnAttendance" Click="BtnAttendance_Click"  HorizontalAlignment="Center"  VerticalAlignment="Center"   Grid.Row="2"  />
-        <Button Grid.Column="0" Content="Сотрудники" x:Name="BtnStaff" Click="BtnStaff_Click" HorizontalAlignment="Center"  VerticalAlignment="Center" />
-        <Button Grid.Column="1" Content="Представитель" x:Name="BtnRepresentative" Click="BtnRepresentative_Click" HorizontalAlignment="Center"  VerticalAlignment="Center" />
+        <Grid Background="#d76e00" >
+            <Button Grid.Row="0" Content="Клиенты" x:Name="BtnClient" Click="BtnClient_Click" HorizontalAlignment="Center"  VerticalAlignment="Center"  Width="100" />
+        </Grid>
+        <Grid Grid.Row="1" Background="#d76e00" >
+            <Button Content="Группы" x:Name="BtnGroup" Click="BtnGroup_Click"  HorizontalAlignment="Center" Grid.Row="1"  Width="100"/>
+        </Grid>
+        <Grid Grid.Row="2" Background="#d76e00" >
+            <Button Content="Уроки" x:Name="BtnLesson" Click="BtnLesson_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Width="100"  />
+        </Grid>
+        <Grid Grid.Row="3" Background="#d76e00" >
+            <Button Content="Посещаемость" x:Name="BtnAttendance" Click="BtnAttendance_Click"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="3" Width="100"  />
+        </Grid>
+        <Grid Grid.Row="4" Background="#d76e00" >
+            <Button Content="Представитель" x:Name="BtnRepresentative" Click="BtnRepresentative_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="6" Width="100" />
+        </Grid>
+        <Grid Grid.Row="5" Background="#d76e00" >
+            <Button Content="Сотрудники" x:Name="BtnStaff" Click="BtnStaff_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Width="100" />
+        </Grid>
+       
 
     </Grid>
 </Page>

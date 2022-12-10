@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5f70d417be974e7a9ebbbcaab2474a0a" Name="Diagram1">
+        <EntityTypeShape EntityType="govorilegkoModel1.sysdiagram" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel1.Users_company" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel1.Группа" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel1.Клиент" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel1.Посещаемость" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel1.Представитель" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel1.Распределение" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel1.Сотрудник" Width="1.5" PointX="1.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel1.Уроки" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="govorilegkoModel1.FK_Группа_Сотрудник" ManuallyRouted="false" />
+        <AssociationConnector Association="govorilegkoModel1.FK_Распределение_Группа" ManuallyRouted="false" />
+        <AssociationConnector Association="govorilegkoModel1.FK_Уроки_Группа" ManuallyRouted="false" />
+        <AssociationConnector Association="govorilegkoModel1.FK_Посещаемость_Клиент" ManuallyRouted="false" />
+        <AssociationConnector Association="govorilegkoModel1.FK_Представитель_Клиент" ManuallyRouted="false" />
+        <AssociationConnector Association="govorilegkoModel1.FK_Распределение_Клиент" ManuallyRouted="false" />
+        <AssociationConnector Association="govorilegkoModel1.FK_Посещаемость_Уроки" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

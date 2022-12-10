@@ -11,15 +11,21 @@
             <RowDefinition Height="50*"/>
             <RowDefinition Height="369*"/>
         </Grid.RowDefinitions>
+        <Grid Grid.Row="2">
 
+        </Grid>
         <Grid Grid.Row="0" Background="#d76e00" >
             <Image  Source="govorilegko.png" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50" Width="55">
             </Image>
 
         </Grid>
+        <Grid Grid.Row="1">
+            <Image Source="/image/OnMfZAjzXi0.jpg" Stretch="Uniform"  HorizontalAlignment="Left" Width="495" Margin="305,0,0,0">
+            </Image>
+        </Grid>
         <Button  Content="Назад" x:Name="BtnBack" Click="BtnBack_Click" Background="#FFF17E04" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" Width="147"  Margin="0,10,5,10" />
 
-        <Grid Grid.Row="1" Background="#FFFFFF">
+        <Grid Grid.Row="1">
             <Frame  Name="MainFrame" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_CR"/>
         </Grid>
     </Grid>

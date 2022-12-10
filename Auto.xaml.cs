@@ -57,7 +57,7 @@ namespace GovoriLegko
             string sotr = "Sotr";
             string manager = "Manager";
             string querystring = $"SELECT Login, Password, Access  FROM Users_company where Login ='{login}' and Password = '{password}'";
-            SqlConnection SqlConnection = new SqlConnection(@"Data Source = DESKTOP-HIDPVTM\SQLEXPRESS01; Initial Catalog=govorilegko; Integrated Security=True");
+            SqlConnection SqlConnection = new SqlConnection(@"Data Source = LAPTOP-5H358NNC; Initial Catalog=govorilegko; Integrated Security=True");
             SqlCommand sqlCommand = new SqlCommand(querystring, SqlConnection);
             sqlDataAdapter.SelectCommand = sqlCommand;
             sqlDataAdapter.Fill(table);
