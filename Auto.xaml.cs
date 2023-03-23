@@ -83,7 +83,6 @@ namespace GovoriLegko
                 }
                 else if (Access == sotr)
                 {
-                    myPage.BtnGroup.Visibility = Visibility.Visible;
                     Manager.MainFrame.Navigate(new knopkiadmin());
                     SqlConnection.Close();
                 }

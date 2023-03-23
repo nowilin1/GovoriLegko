@@ -141,6 +141,7 @@
     <Compile Include="Staff.xaml.cs">
       <DependentUpon>Staff.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StaffViewModel.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>

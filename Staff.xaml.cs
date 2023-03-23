@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,6 @@ namespace GovoriLegko
     /// </summary>
     public partial class Staff : Page
     {
-        public string userRole;
 
         private readonly ObservableCollection<Сотрудник> _allStaff;
         public Staff()
@@ -31,12 +31,13 @@ namespace GovoriLegko
             DGStaff.ItemsSource = _allStaff;
 
             Auto auto = new Auto();
-            userRole = auto.Access;
-            if (userRole == "Manager")
-            {
-                BtnAdd.DataContext = new { VisibilityRole = Visibility.Hidden };
-                BtnDell.DataContext = new { VisibilityRole = Visibility.Hidden };
-            }
+            string userRole = auto.Access;
+            Debug.WriteLine(userRole);
+            //if (userRole == "Manager")
+            //{
+            //    BtnAdd.DataContext = new { VisibilityRole = Visibility.Collapsed };
+            //    BtnDell.DataContext = new { VisibilityRole = Visibility.Collapsed };
+            //}
 
 
         }
