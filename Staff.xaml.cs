@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,14 @@ namespace GovoriLegko
             _allStaff = new ObservableCollection<Сотрудник>(govorilegkoEntities.GetContext().Сотрудник.ToList());
             DGStaff.ItemsSource = _allStaff;
         }
-            private void cmbPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string access = value as string;
+            string requiredAccess = parameter as string;
+            return access == requiredAccess ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void cmbPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string selectedPosition = ((ComboBoxItem)cmbPosition.SelectedItem).Content.ToString();
             List<Сотрудник> filteredStaff = govorilegkoEntities.GetContext().Сотрудник.Where(s => s.Должность == selectedPosition).ToList();
