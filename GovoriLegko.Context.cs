@@ -21,14 +21,12 @@ namespace GovoriLegko
             : base("name=govorilegkoEntities")
         {
         }
-
         private static govorilegkoEntities _context;
         public static govorilegkoEntities GetContext()
         {
             if (_context == null) _context = new govorilegkoEntities();
             return _context;
         }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

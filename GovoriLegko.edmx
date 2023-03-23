@@ -32,8 +32,8 @@
           <Property Name="ID_Сотрудника" Type="int" />
           <Property Name="Название" Type="nvarchar" MaxLength="50" />
           <Property Name="Количество_человек" Type="nvarchar" MaxLength="50" />
-          <Property Name="Дата_начала_занятия" Type="date" />
-          <Property Name="Дата_конца_занятия" Type="date" />
+          <Property Name="Дата_начала_занятия" Type="datetime" />
+          <Property Name="Дата_конца_занятия" Type="datetime" />
           <Property Name="Предмет" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Клиент">
@@ -45,7 +45,7 @@
           <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
           <Property Name="Имя" Type="nvarchar" MaxLength="50" />
           <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
-          <Property Name="Дата_рождения" Type="date" />
+          <Property Name="Дата_рождения" Type="datetime" />
           <Property Name="Уровень_знаний" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Посещаемость">
@@ -84,7 +84,7 @@
           <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
           <Property Name="Имя" Type="nvarchar" MaxLength="50" />
           <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
-          <Property Name="Дата_рождения" Type="date" />
+          <Property Name="Дата_рождения" Type="datetime" />
           <Property Name="Номер_телефона" Type="nvarchar" MaxLength="50" />
           <Property Name="Должность" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -284,8 +284,8 @@
           <Property Name="ID_Сотрудника" Type="Int32" />
           <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Количество_человек" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Дата_начала_занятия" Type="DateTime" Precision="0" />
-          <Property Name="Дата_конца_занятия" Type="DateTime" Precision="0" />
+          <Property Name="Дата_начала_занятия" Type="DateTime" Precision="3" />
+          <Property Name="Дата_конца_занятия" Type="DateTime" Precision="3" />
           <Property Name="Предмет" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Группа_Сотрудник" FromRole="Группа" ToRole="Сотрудник" />
           <NavigationProperty Name="Распределение" Relationship="Self.FK_Распределение_Группа" FromRole="Группа" ToRole="Распределение" />
@@ -300,7 +300,7 @@
           <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+          <Property Name="Дата_рождения" Type="DateTime" Precision="3" />
           <Property Name="Уровень_знаний" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Посещаемость" Relationship="Self.FK_Посещаемость_Клиент" FromRole="Клиент" ToRole="Посещаемость" />
           <NavigationProperty Name="Представитель" Relationship="Self.FK_Представитель_Клиент" FromRole="Клиент" ToRole="Представитель" />
@@ -347,7 +347,7 @@
           <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Дата_рождения" Type="DateTime" Precision="0" />
+          <Property Name="Дата_рождения" Type="DateTime" Precision="3" />
           <Property Name="Номер_телефона" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Должность" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Группа" Relationship="Self.FK_Группа_Сотрудник" FromRole="Сотрудник" ToRole="Группа" />

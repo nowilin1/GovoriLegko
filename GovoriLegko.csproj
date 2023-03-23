@@ -44,12 +44,14 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Build.Conversion.v4.0" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -83,23 +85,15 @@
     <Compile Include="Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdminToVisibilityConverter.cs" />
     <Compile Include="Auto.xaml.cs">
       <DependentUpon>Auto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GovoriLegcko.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GovoriLegcko.Context.tt</DependentUpon>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GovoriLegcko.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GovoriLegcko.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GovoriLegcko.edmx</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GovoriLegko.Context.cs">
       <AutoGen>True</AutoGen>
@@ -116,6 +110,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GovoriLegko.edmx</DependentUpon>
     </Compile>
+    <Compile Include="govorilegkoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>govorilegkoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Knopki.xaml.cs">
       <DependentUpon>Knopki.xaml</DependentUpon>
     </Compile>
@@ -125,6 +124,9 @@
     <Compile Include="knopkiman.xaml.cs">
       <DependentUpon>knopkiman.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Report.xaml.cs">
+      <DependentUpon>Report.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Representative.xaml.cs">
       <DependentUpon>Representative.xaml</DependentUpon>
     </Compile>
@@ -132,40 +134,40 @@
       <DependentUpon>Schedule.xaml</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Staff.xaml.cs">
       <DependentUpon>Staff.xaml</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Users_company.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Группа.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Клиент.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Посещаемость.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Представитель.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Распределение.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Сотрудник.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Уроки.cs">
-      <DependentUpon>GovoriLegcko.tt</DependentUpon>
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Page Include="AddEditGroup.xaml">
       <SubType>Designer</SubType>
@@ -243,6 +245,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Representative.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -271,23 +277,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report1.rdlc" />
     <EntityDeploy Include="GovoriLegko.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GovoriLegko.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <EntityDeploy Include="GovoriLegcko.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GovoriLegcko.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="GovoriLegcko.edmx.diagram">
-      <DependentUpon>GovoriLegcko.edmx</DependentUpon>
-    </None>
     <None Include="GovoriLegko.edmx.diagram">
       <DependentUpon>GovoriLegko.edmx</DependentUpon>
+    </None>
+    <None Include="govorilegkoDataSet.xsc">
+      <DependentUpon>govorilegkoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="govorilegkoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>govorilegkoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="govorilegkoDataSet.xss">
+      <DependentUpon>govorilegkoDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -314,16 +328,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GovoriLegcko.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GovoriLegcko.edmx</DependentUpon>
-      <LastGenOutput>GovoriLegcko.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="GovoriLegcko.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GovoriLegcko.edmx</DependentUpon>
-      <LastGenOutput>GovoriLegcko.cs</LastGenOutput>
-    </Content>
+    <Resource Include="image\OnMfZAjzXi0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="GovoriLegko.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GovoriLegko.edmx</DependentUpon>
@@ -334,7 +341,9 @@
       <DependentUpon>GovoriLegko.edmx</DependentUpon>
       <LastGenOutput>GovoriLegko.cs</LastGenOutput>
     </Content>
-    <Resource Include="image\OnMfZAjzXi0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

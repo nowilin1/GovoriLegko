@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,10 +21,43 @@ namespace GovoriLegko
     /// </summary>
     public partial class Staff : Page
     {
+        private readonly ObservableCollection<Сотрудник> _allStaff;
         public Staff()
         {
             InitializeComponent();
-            DGStaff.ItemsSource = govorilegkoEntities.GetContext().Сотрудник.ToList();
+            _allStaff = new ObservableCollection<Сотрудник>(govorilegkoEntities.GetContext().Сотрудник.ToList());
+            DGStaff.ItemsSource = _allStaff;
+        }
+            private void cmbPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selectedPosition = ((ComboBoxItem)cmbPosition.SelectedItem).Content.ToString();
+            List<Сотрудник> filteredStaff = govorilegkoEntities.GetContext().Сотрудник.Where(s => s.Должность == selectedPosition).ToList();
+            DGStaff.ItemsSource = filteredStaff;
+            cmbPosition.SelectedIndex = 0;
+        }
+
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            var birthdateFilterDate = BirthdateFilter.SelectedDate;
+            if (birthdateFilterDate != null)
+            {
+                var filteredStaff = govorilegkoEntities.GetContext().Сотрудник.Where(s => s.Дата_рождения == birthdateFilterDate.Value).ToList();
+                DGStaff.ItemsSource = filteredStaff;
+            }
+        }
+
+        private void TxtFilter_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filterText = TxtFilter.Text.ToLower();
+            if (string.IsNullOrEmpty(filterText))
+            {
+                DGStaff.ItemsSource = _allStaff;
+            }
+            else
+            {
+                var filteredList = _allStaff.Where(s => s.Фамилия.ToLower().Contains(filterText)).ToList();
+                DGStaff.ItemsSource = filteredList;
+            }
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
@@ -36,7 +70,7 @@ namespace GovoriLegko
             Manager.MainFrame.Navigate(new AddEditStaff(null));
         }
 
-        private void BtnDell_Click(object sender, RoutedEventArgs e)
+        void BtnDell_Click(object sender, RoutedEventArgs e)
         {
             var clientRemove = DGStaff.SelectedItems.Cast<Сотрудник>().ToList();
             if (MessageBox.Show($"Вы точно хотите удалить следующие {clientRemove.Count()} элементов?", "Внимание",
@@ -54,6 +88,11 @@ namespace GovoriLegko
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
+        }
+
+        private void TxtFilter1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

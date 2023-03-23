@@ -26,14 +26,19 @@ namespace GovoriLegko
 
     public partial class Auto : Page
     {
+
         public string Access;
+
         public Auto()
         {
             InitializeComponent();
+
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+
+            knopkiadmin myPage = new knopkiadmin();
             StringBuilder errors = new StringBuilder();
 
             if (string.IsNullOrWhiteSpace(login_Box.Text))
@@ -67,17 +72,19 @@ namespace GovoriLegko
                 Access = table.Rows[0][2].ToString();
                 if (Access == admin)
                 {
+                    
                     Manager.MainFrame.Navigate(new knopkiadmin());
                     SqlConnection.Close();
                 }
                 else if (Access == manager)
                 {
-                    Manager.MainFrame.Navigate(new knopkiman());
+                    Manager.MainFrame.Navigate(new knopkiadmin());
                     SqlConnection.Close();
                 }
                 else if (Access == sotr)
                 {
-                    Manager.MainFrame.Navigate(new Knopki());
+                    myPage.BtnGroup.Visibility = Visibility.Visible;
+                    Manager.MainFrame.Navigate(new knopkiadmin());
                     SqlConnection.Close();
                 }
                 

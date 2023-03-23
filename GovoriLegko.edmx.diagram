@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="92116798350d4c1e9dbb0b2d56e00406" Name="Diagram1">
+      <Diagram DiagramId="ac330fa92ca5435d857823b1fa64af05" Name="Diagram1">
         <EntityTypeShape EntityType="govorilegkoModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="govorilegkoModel.Users_company" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="govorilegkoModel.Группа" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />

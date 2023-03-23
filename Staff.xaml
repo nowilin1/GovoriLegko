@@ -3,31 +3,55 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:GovoriLegko"
+      xmlns:local="clr-namespace:GovoriLegko.Converters"
+
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Staff">
+    <Page.Resources>
+        <local:AdminToVisibilityConverter x:Key="AdminToVisibilityConverter"/>
+    </Page.Resources>
+
 
     <Grid>
-        <DataGrid  x:Name="DGStaff" AutoGenerateColumns="False" IsReadOnly="True" FontFamily="Comic Sans MS" FontSize="15" Margin="0,0,0,41">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="131*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Width="800" Height="45" >
+            <Label Content="Фамилия:" VerticalAlignment="Center"></Label>
+            <TextBox x:Name="TxtFilter" TextChanged="TxtFilter_TextChanged" Width="140" Height="30"/>
+            <Label Content="Должность:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="cmbPosition" SelectionChanged="cmbPosition_SelectionChanged" DisplayMemberPath="Name" Width="140" Height="30">
+                <ComboBoxItem Content="Администратор"/>
+                <ComboBoxItem Content="Логопед"/>
+                <ComboBoxItem Content="Менеджер"/>
+            </ComboBox>
+
+            <DatePicker x:Name="BirthdateFilter" SelectedDate="{Binding BirthdateFilterDate, Mode=TwoWay}" Margin="10" Height="25" Width="130" />
+            <Button Content="Фильтровать" Click="FilterButton_Click" />
+        </StackPanel>
+        <DataGrid  x:Name="DGStaff" AutoGenerateColumns="False" IsReadOnly="True" FontFamily="Comic Sans MS" FontSize="15" Grid.Row="1" >
+            <!--CanUserSortColumns="False"-->
+
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Фамилия" Width="*" Binding="{Binding Фамилия}" FontSize="16" />
+                <DataGridTextColumn Header="Фамилия" Width="*" Binding="{Binding Фамилия}" SortMemberPath="Фамилия" FontSize="16" />
                 <DataGridTextColumn Header="Имя" Width="*" Binding="{Binding Имя}" FontSize="16"/>
                 <DataGridTextColumn Header="Отчество" Width="*" Binding="{Binding Отчество}" FontSize="16"/>
-                <DataGridTextColumn Header="Дата рождения" Width="*" Binding="{Binding Дата_рождения}" FontSize="16"/>
+                <DataGridTextColumn Header="Дата рождения" Width="*" Binding="{Binding Дата_рождения}" SortMemberPath="Дата_рождения" SortDirection="Ascending"  FontSize="16"/>
                 <DataGridTextColumn Header="Номер телефона" Width="*" Binding="{Binding Номер_телефона}" FontSize="16"/>
                 <DataGridTextColumn Header="Должность" Width="*" Binding="{Binding Должность}" FontSize="16"/>
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button  Content="Редактировать" Name="BtnEdit" Click="BtnEdit_Click"></Button>
+                            <Button  Content="Редактировать" Name="BtnEdit" Click="BtnEdit_Click" ></Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button  x:Name="BtnAdd" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="BtnAdd_Click"/>
+        <Button  x:Name="BtnAdd" Content="Добавить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="BtnAdd_Click" Margin="5,0,0,5" Grid.Row="1" Height="30" Width="175" Visibility="{Binding Role, Converter={StaticResource AdminToVisibilityConverter}, ConverterParameter=Admin}"/>
 
-        <Button Content="Удалить" HorizontalAlignment="Right" VerticalAlignment="Bottom" Name="BtnDell" Click="BtnDell_Click"></Button>
+        <Button Content="Удалить" HorizontalAlignment="Right" VerticalAlignment="Bottom" Name="BtnDell" Click="BtnDell_Click" Margin="0,0,5,5" Grid.Row="1" Height="30" Width="175" Visibility="{Binding Role, Converter={StaticResource AdminToVisibilityConverter}, ConverterParameter=Admin}"></Button>
     </Grid>
 </Page>

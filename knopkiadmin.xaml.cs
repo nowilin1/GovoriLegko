@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,33 +25,33 @@ namespace GovoriLegko
         {
             InitializeComponent();
         }
-
-        private void BtnClient_Click(object sender, RoutedEventArgs e)
+        
+        public void BtnClient_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Client());
         }
 
-        private void BtnAttendance_Click(object sender, RoutedEventArgs e)
+        public void BtnAttendance_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Schedule());
         }
 
-        private void BtnLesson_Click(object sender, RoutedEventArgs e)
+        public void BtnLesson_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Lesson());
         }
 
-        private void BtnGroup_Click(object sender, RoutedEventArgs e)
+        public void BtnGroup_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Group());
         }
 
-        private void BtnStaff_Click(object sender, RoutedEventArgs e)
+        public void BtnStaff_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Staff());
         }
 
-        private void BtnRepresentative_Click(object sender, RoutedEventArgs e)
+        public void BtnRepresentative_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Representative());
         }
