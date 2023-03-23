@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,18 +21,24 @@ namespace GovoriLegko
     /// </summary>
     public partial class Staff : Page
     {
+        public string userRole;
+
         private readonly ObservableCollection<Сотрудник> _allStaff;
         public Staff()
         {
             InitializeComponent();
             _allStaff = new ObservableCollection<Сотрудник>(govorilegkoEntities.GetContext().Сотрудник.ToList());
             DGStaff.ItemsSource = _allStaff;
-        }
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            string access = value as string;
-            string requiredAccess = parameter as string;
-            return access == requiredAccess ? Visibility.Visible : Visibility.Collapsed;
+
+            Auto auto = new Auto();
+            userRole = auto.Access;
+            if (userRole == "Manager")
+            {
+                BtnAdd.DataContext = new { VisibilityRole = Visibility.Hidden };
+                BtnDell.DataContext = new { VisibilityRole = Visibility.Hidden };
+            }
+
+
         }
 
         private void cmbPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
