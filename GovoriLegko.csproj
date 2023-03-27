@@ -123,6 +123,9 @@
     <Compile Include="knopkiman.xaml.cs">
       <DependentUpon>knopkiman.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Record.xaml.cs">
+      <DependentUpon>Record.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
     </Compile>
@@ -141,11 +144,13 @@
     <Compile Include="Staff.xaml.cs">
       <DependentUpon>Staff.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StaffViewModel.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Users_company.cs">
+      <DependentUpon>GovoriLegko.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View_1.cs">
       <DependentUpon>GovoriLegko.tt</DependentUpon>
     </Compile>
     <Compile Include="Группа.cs">
@@ -245,6 +250,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Record.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Report.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -331,6 +340,9 @@
     <Resource Include="image\OnMfZAjzXi0.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="GovoriLegko.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GovoriLegko.edmx</DependentUpon>
@@ -341,9 +353,6 @@
       <DependentUpon>GovoriLegko.edmx</DependentUpon>
       <LastGenOutput>GovoriLegko.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

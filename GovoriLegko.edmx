@@ -98,6 +98,30 @@
           <Property Name="Начало" Type="nvarchar" MaxLength="50" />
           <Property Name="Длительноть" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "govorilegko.dbo.View_1" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="ID_Клиента" />
+            <PropertyRef Name="ID_Сотрудника" />
+            <PropertyRef Name="Expr4" />
+          </Key>
+          <Property Name="ID_Клиента" Type="int" Nullable="false" />
+          <Property Name="Expr5" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expr6" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expr7" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expr8" Type="datetime" />
+          <Property Name="Expr9" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expr2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expr3" Type="nvarchar" MaxLength="50" />
+          <Property Name="Номер_телефона" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expr10" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expr11" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_Сотрудника" Type="int" Nullable="false" />
+          <Property Name="Expr4" Type="nvarchar" MaxLength="55" Nullable="false" />
+          <Property Name="Должность" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_Группа_Сотрудник">
           <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
           <End Role="Группа" Type="Self.Группа" Multiplicity="*" />
@@ -223,6 +247,25 @@
           <EntitySet Name="Распределение" EntityType="Self.Распределение" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Уроки" EntityType="Self.Уроки" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_1" EntityType="Self.View_1" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_1].[ID_Клиента] AS [ID_Клиента], 
+    [View_1].[Expr5] AS [Expr5], 
+    [View_1].[Expr6] AS [Expr6], 
+    [View_1].[Expr7] AS [Expr7], 
+    [View_1].[Expr8] AS [Expr8], 
+    [View_1].[Expr9] AS [Expr9], 
+    [View_1].[Expr1] AS [Expr1], 
+    [View_1].[Expr2] AS [Expr2], 
+    [View_1].[Expr3] AS [Expr3], 
+    [View_1].[Номер_телефона] AS [Номер_телефона], 
+    [View_1].[Expr10] AS [Expr10], 
+    [View_1].[Expr11] AS [Expr11], 
+    [View_1].[ID_Сотрудника] AS [ID_Сотрудника], 
+    [View_1].[Expr4] AS [Expr4], 
+    [View_1].[Должность] AS [Должность]
+    FROM [dbo].[View_1] AS [View_1]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Группа_Сотрудник" Association="Self.FK_Группа_Сотрудник">
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Группа" EntitySet="Группа" />
@@ -364,6 +407,28 @@
           <NavigationProperty Name="Группа" Relationship="Self.FK_Уроки_Группа" FromRole="Уроки" ToRole="Группа" />
           <NavigationProperty Name="Посещаемость" Relationship="Self.FK_Посещаемость_Уроки" FromRole="Уроки" ToRole="Посещаемость" />
         </EntityType>
+        <EntityType Name="View_1">
+          <Key>
+            <PropertyRef Name="ID_Клиента" />
+            <PropertyRef Name="ID_Сотрудника" />
+            <PropertyRef Name="Expr4" />
+          </Key>
+          <Property Name="ID_Клиента" Type="Int32" Nullable="false" />
+          <Property Name="Expr5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr8" Type="DateTime" Precision="3" />
+          <Property Name="Expr9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr11" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Сотрудника" Type="Int32" Nullable="false" />
+          <Property Name="Expr4" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Должность" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <Association Name="FK_Группа_Сотрудник">
           <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
           <End Role="Группа" Type="Self.Группа" Multiplicity="*" />
@@ -458,6 +523,7 @@
           <EntitySet Name="Распределение" EntityType="Self.Распределение" />
           <EntitySet Name="Сотрудник" EntityType="Self.Сотрудник" />
           <EntitySet Name="Уроки" EntityType="Self.Уроки" />
+          <EntitySet Name="View_1" EntityType="Self.View_1" />
           <AssociationSet Name="FK_Группа_Сотрудник" Association="Self.FK_Группа_Сотрудник">
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Группа" EntitySet="Группа" />
@@ -633,6 +699,27 @@
                 <ScalarProperty Name="Дата" ColumnName="Дата" />
                 <ScalarProperty Name="Начало" ColumnName="Начало" />
                 <ScalarProperty Name="Длительноть" ColumnName="Длительноть" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_1">
+            <EntityTypeMapping TypeName="govorilegkoModel.View_1">
+              <MappingFragment StoreEntitySet="View_1">
+                <ScalarProperty Name="ID_Клиента" ColumnName="ID_Клиента" />
+                <ScalarProperty Name="Expr5" ColumnName="Expr5" />
+                <ScalarProperty Name="Expr6" ColumnName="Expr6" />
+                <ScalarProperty Name="Expr7" ColumnName="Expr7" />
+                <ScalarProperty Name="Expr8" ColumnName="Expr8" />
+                <ScalarProperty Name="Expr9" ColumnName="Expr9" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+                <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
+                <ScalarProperty Name="Expr10" ColumnName="Expr10" />
+                <ScalarProperty Name="Expr11" ColumnName="Expr11" />
+                <ScalarProperty Name="ID_Сотрудника" ColumnName="ID_Сотрудника" />
+                <ScalarProperty Name="Expr4" ColumnName="Expr4" />
+                <ScalarProperty Name="Должность" ColumnName="Должность" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -40,6 +40,9 @@
         <Grid Grid.Row="5"  >
             <Button Content="Сотрудники" x:Name="BtnStaff" Click="BtnStaff_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="5" Width="100" />
         </Grid>
+        <Grid Grid.Row="5" Grid.Column="1" >
+            <Button Content="Запись" x:Name="BtnRecord" Click="BtnRecord_Click" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="5" Width="100" />
+        </Grid>
        
 
     </Grid>

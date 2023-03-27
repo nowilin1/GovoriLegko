@@ -47,7 +47,6 @@ namespace GovoriLegko
             string selectedPosition = ((ComboBoxItem)cmbPosition.SelectedItem).Content.ToString();
             List<Сотрудник> filteredStaff = govorilegkoEntities.GetContext().Сотрудник.Where(s => s.Должность == selectedPosition).ToList();
             DGStaff.ItemsSource = filteredStaff;
-            cmbPosition.SelectedIndex = 0;
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)

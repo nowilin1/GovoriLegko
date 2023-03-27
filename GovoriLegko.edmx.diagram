@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ac330fa92ca5435d857823b1fa64af05" Name="Diagram1">
+      <Diagram DiagramId="9ac0608361724c3c9ef99922a84b90e5" Name="Diagram1">
         <EntityTypeShape EntityType="govorilegkoModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="govorilegkoModel.Users_company" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="govorilegkoModel.Группа" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
@@ -14,6 +14,7 @@
         <EntityTypeShape EntityType="govorilegkoModel.Распределение" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="govorilegkoModel.Сотрудник" Width="1.5" PointX="1.5" PointY="15.875" IsExpanded="true" />
         <EntityTypeShape EntityType="govorilegkoModel.Уроки" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.View_1" Width="1.5" PointX="5.75" PointY="8.5" IsExpanded="true" />
         <AssociationConnector Association="govorilegkoModel.FK_Группа_Сотрудник" ManuallyRouted="false" />
         <AssociationConnector Association="govorilegkoModel.FK_Распределение_Группа" ManuallyRouted="false" />
         <AssociationConnector Association="govorilegkoModel.FK_Уроки_Группа" ManuallyRouted="false" />

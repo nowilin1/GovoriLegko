@@ -55,5 +55,9 @@ namespace GovoriLegko
         {
             Manager.MainFrame.Navigate(new Representative());
         }
+        public void BtnRecord_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Record());
+        }
     }
 }

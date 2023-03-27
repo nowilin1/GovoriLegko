@@ -41,6 +41,7 @@ namespace GovoriLegko
         public virtual DbSet<Распределение> Распределение { get; set; }
         public virtual DbSet<Сотрудник> Сотрудник { get; set; }
         public virtual DbSet<Уроки> Уроки { get; set; }
+        public virtual DbSet<View_1> View_1 { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
