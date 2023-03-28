@@ -28,6 +28,7 @@ namespace GovoriLegko
                 _currentclient = selectedclient;
             DataContext = _currentclient;
             ComboCounties.ItemsSource = new List<string> { "1", "2", "3", "4", "5"};
+            
 
         }
 
