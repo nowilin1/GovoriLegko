@@ -57,7 +57,7 @@ namespace GovoriLegko
         }
         public void BtnRecord_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new Recording());
+            Manager.MainFrame.Navigate(new AddEditRecording());
         }
     }
 }

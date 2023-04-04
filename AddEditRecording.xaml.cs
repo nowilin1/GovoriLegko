@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using static GovoriLegko.AddEditRecording;
 
 namespace GovoriLegko
 {
@@ -21,72 +20,56 @@ namespace GovoriLegko
     /// </summary>
     public partial class AddEditRecording : Page
     {
-        public class ViewModel
-        {
-            public Клиент _currentclient { get; set; }
-            public Группа _currentgroup { get; set; }
-            public Сотрудник _currentsotr { get; set; }
-            public Представитель _currentrep { get; set; }
-        }
-        private ViewModel _viewModel = new ViewModel();
-        public AddEditRecording(Клиент selectedview, Группа selectedgroup, Сотрудник selectedsotr, Представитель selectedrep)
+        private RecordingViewModel _viewModel = new RecordingViewModel();
+        public AddEditRecording()
         {
             InitializeComponent();
-            if (selectedview != null)
-                _viewModel._currentclient = selectedview;
-
-            if (selectedgroup != null)
-                _viewModel._currentgroup = selectedgroup;
-
-            if (selectedsotr != null)
-                _viewModel._currentsotr = selectedsotr;
-
-            if (selectedrep != null)
-                _viewModel._currentrep = selectedrep;
-            DataContext = _viewModel;
+            DataContext = new
+            {
+                Клиент = new Клиент(),
+                Группа = new Группа(),
+                Сотрудники = new Сотрудник(),
+                Представитель = new Представитель()
+            };
             ComboCounties.ItemsSource = new List<string> { "1", "2", "3", "4", "5" };
-            ComboCounties1.ItemsSource = new List<string> { "Логопед", "Дефектолог" };
+            ComboCounties1.ItemsSource = new List<string> { "Группа раннего развития" };
         }
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
-            if (string.IsNullOrWhiteSpace(_viewModel._currentclient.Фамилия))
+            if (string.IsNullOrWhiteSpace(((dynamic)DataContext).Клиент.Фамилия))
                 errors.AppendLine("Укажите Фамилия");
-            if (string.IsNullOrWhiteSpace(_viewModel._currentclient.Имя))
+            if (string.IsNullOrWhiteSpace(((dynamic)DataContext).Клиент.Имя))
                 errors.AppendLine("Укажите Имя");
-            if (string.IsNullOrWhiteSpace(_viewModel._currentclient.Отчество))
-                errors.AppendLine("Укажите Отчество");
-            if (string.IsNullOrWhiteSpace(_viewModel._currentclient.Фамилия))
-                errors.AppendLine("Укажите Фамилию представителя");            
-            if (string.IsNullOrWhiteSpace(_viewModel._currentrep.Имя))
-                errors.AppendLine("Укажите Имя");            
-            if (string.IsNullOrWhiteSpace(_viewModel._currentrep.Отчество))
-                errors.AppendLine("Укажите Отчество");            
-            if (string.IsNullOrWhiteSpace(_viewModel._currentrep.Номер_телефона))
-                errors.AppendLine("Укажите Номер телефона");            
-            if (string.IsNullOrWhiteSpace(_viewModel._currentgroup.Название))
-                errors.AppendLine("Укажите Название группы");            
-            if (string.IsNullOrWhiteSpace(_viewModel._currentgroup.Предмет))
-                errors.AppendLine("Укажите Предмет");            
-            //if (string.IsNullOrWhiteSpace(_currentsotr.Expr4))
-            //    errors.AppendLine("Укажите Сотрудника");
+            if (string.IsNullOrWhiteSpace(((dynamic)DataContext).Клиент.Отчество))
+                errors.AppendLine("Укажите Отчество");      
+            if (string.IsNullOrWhiteSpace(((dynamic)DataContext).Представитель.Фамилия))
+                errors.AppendLine("Укажите Фамилия");
+            if (string.IsNullOrWhiteSpace(((dynamic)DataContext).Представитель.Имя))
+                errors.AppendLine("Укажите Имя");
+            if (string.IsNullOrWhiteSpace(((dynamic)DataContext).Представитель.Отчество))
+                errors.AppendLine("Укажите Отчество");         
+            if (string.IsNullOrWhiteSpace(((dynamic)DataContext).Представитель.Номер_телефона))
+                errors.AppendLine("Укажите Номер телефона");           
             if (DatePickerSup.SelectedDate == null)
                 errors.AppendLine("Выберите Дату рождения");
             if (ComboCounties.SelectedItem == null)
                 errors.AppendLine("Выберите Уровень знания");
             if (ComboCounties1.SelectedItem == null)
-                errors.AppendLine("Выберите Должность сотрудника");
+                errors.AppendLine("Выберите Название группы");
             if (errors.Length > 0)
             {
                 MessageBox.Show(errors.ToString());
                 return;
             }
-            if (_viewModel._currentclient.ID_Клиента== 0)
-                govorilegkoEntities.GetContext().Клиент.Add(_viewModel._currentclient);
+            if (((dynamic)DataContext).Клиент.ID_Клиента== 0)
+                govorilegkoEntities.GetContext().Клиент.Add(((dynamic)DataContext).Клиент);
+            if (((dynamic)DataContext).Представитель.ID_Представитель == 0)
+                govorilegkoEntities.GetContext().Представитель.Add(((dynamic)DataContext).Представитель);
             try
             {
-                _viewModel._currentclient.Дата_рождения = DatePickerSup.SelectedDate;
+                ((dynamic)DataContext).Клиент.Дата_рождения = DatePickerSup.SelectedDate;
                 govorilegkoEntities.GetContext().SaveChanges();
                 MessageBox.Show("Информация сохранена!!");
                 Manager.MainFrame.GoBack();
@@ -96,5 +79,6 @@ namespace GovoriLegko
                 MessageBox.Show(ex.Message.ToString());
             }
         }
+
     }
 }

@@ -25,38 +25,29 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="Фамилия" FontFamily="Verdana" Height="15"   ></TextBlock>
         <TextBlock Text="Имя" FontFamily="Verdana" Grid.Row="1" Height="15" ></TextBlock>
         <TextBlock Text="Отчество" Grid.Row="2" FontFamily="Verdana" Height="15"  />
+        <TextBlock Text="Фамилия представителя" FontFamily="Verdana" Height="15" Grid.Row="6"  ></TextBlock>
+        <TextBlock Text="Имя представителя" FontFamily="Verdana" Grid.Row="7" Height="15" ></TextBlock>
+        <TextBlock Text="Отчество представителя" Grid.Row="8" FontFamily="Verdana" Height="15"  />
         <TextBlock Text="Дата рождения" FontFamily="Verdana" Grid.Row="3" Height="15" />
         <TextBlock Text="Уровень знаний" Grid.Row="4" FontFamily="Verdana" Height="30"  />
-        <TextBlock Text="Фамилия представителя" Grid.Row="5" FontFamily="Verdana" Height="30"  />
-        <TextBlock Text="Имя" Grid.Row="6" FontFamily="Verdana" Height="30"  />
-        <TextBlock Text="Отчество" Grid.Row="7" FontFamily="Verdana" Height="30"  />
-        <TextBlock Text="Номер телефона" Grid.Row="8" FontFamily="Verdana" Height="30" />
-        <TextBlock Text="Название группы" Grid.Row="9" FontFamily="Verdana" Height="30"  />
-        <TextBlock Text="Предмет" Grid.Row="10" FontFamily="Verdana" Height="30"  />
-        <TextBlock Text="Сотрудник" Grid.Row="11" FontFamily="Verdana" Height="30"  />
-        <TextBlock Text="Должность сотрудника" Grid.Row="12" FontFamily="Verdana" Height="30"  />
-        <TextBox Text ="{Binding Фамилия}" MaxHeight="100"  Grid.Column="1" Margin="5,0,5,0" Height="30"></TextBox>
-        <TextBox Text="{Binding Expr7}" Grid.Column="1" Grid.Row="2" Height="30" Margin="5,0,5,0"></TextBox>
-        <TextBox Text="{Binding Expr6}" Grid.Column="1" Grid.Row="1" Height="30" Margin="5,0,5,0"></TextBox>
-        <TextBox Text="{Binding Expr1}" Grid.Column="1" Grid.Row="5" Height="30" Margin="5,0,5,0"></TextBox>
-        <TextBox Text="{Binding Expr2}" Grid.Column="1" Grid.Row="6" Height="30" Margin="5,0,5,0"></TextBox>
-        <TextBox Text="{Binding Expr3}" Grid.Column="1" Grid.Row="7" Height="30" Margin="5,0,5,0"></TextBox>
-        <TextBox Text="{Binding Номер_телефона}" Grid.Column="1" Grid.Row="8" Height="30" Margin="5,0,5,0"></TextBox>
-        <TextBox Text="{Binding Expr10}" Grid.Column="1" Grid.Row="9" Height="30" Margin="5,0,5,0"></TextBox>
-        <TextBox Text="{Binding Expr11}" Grid.Column="1" Grid.Row="10" Height="30" Margin="5,0,5,0"></TextBox>
-        <TextBox Text="{Binding Expr4}" Grid.Column="1" Grid.Row="11" Height="30" Margin="5,0,5,0"></TextBox>
-        <DatePicker Text="{Binding Expr8}" Name="DatePickerSup" Grid.Column="1" Grid.Row="3" Height="30" Margin="0,14,0,14" />
-        <ComboBox SelectedItem="{Binding Expr9}" Grid.Row="4" Grid.Column="1" x:Name="ComboCounties" Margin="5,0,5,0" Height="30" ></ComboBox>
-        <ComboBox SelectedItem="{Binding Должность}" Grid.Row="12" Grid.Column="1" x:Name="ComboCounties1" Margin="5,0,5,0" Height="30" ></ComboBox>
+        <TextBlock Text="Номер телефона" Grid.Row="9" FontFamily="Verdana" Height="30" />
+        <TextBlock Text="Название группы" Grid.Row="5" FontFamily="Verdana" Height="30"  />
+        <TextBox Text ="{Binding Клиент.Фамилия}" MaxHeight="100"  Grid.Column="1" Margin="5,0,5,0" Height="30"></TextBox>
+        <TextBox Text="{Binding Клиент.Имя}" Grid.Column="1" Grid.Row="2" Height="30" Margin="5,0,5,0"></TextBox>
+        <TextBox Text="{Binding Клиент.Отчество}" Grid.Column="1" Grid.Row="1" Height="30" Margin="5,0,5,0"></TextBox>
+        <TextBox Text ="{Binding Представитель.Фамилия}" MaxHeight="100"  Grid.Column="1" Grid.Row="6" Margin="5,0,5,0" Height="30"></TextBox>
+        <TextBox Text="{Binding Представитель.Имя}" Grid.Column="1" Grid.Row="7" Height="30" Margin="5,0,5,0"></TextBox>
+        <TextBox Text="{Binding Представитель.Отчество}" Grid.Column="1" Grid.Row="8" Height="30" Margin="5,0,5,0"></TextBox>
+        <TextBox Text="{Binding Представитель.Номер_телефона}" Grid.Column="1" Grid.Row="9" Height="30" Margin="5,0,5,0"></TextBox>
+        <ComboBox SelectedItem="{Binding Группа.Название}" Grid.Row="5" Grid.Column="1" x:Name="ComboCounties1" Margin="5,0,5,0" Height="30"  />
+        <DatePicker Text="{Binding Клиент.Дата_рождения}" Name="DatePickerSup" Grid.Column="1" Grid.Row="3" Height="30" Margin="0,14,0,14" />
+        <ComboBox SelectedItem="{Binding Клиент.Уровень_знаний}" Grid.Row="4" Grid.Column="1" x:Name="ComboCounties" Margin="5,0,5,0" Height="30" ></ComboBox>
 
 
-        <Button Content="Сохранить" Grid.Row="13" Name="BtnSave" Click="BtnSave_Click" Grid.Column="1" Height="30" Margin="212,0,172,0"/>
+        <Button Content="Сохранить" Grid.Row="13" Name="BtnSave" Click="BtnSave_Click" Grid.Column="1" Height="30" Margin="212,0,172,14" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>

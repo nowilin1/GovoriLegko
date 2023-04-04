@@ -20,16 +20,9 @@ namespace GovoriLegko
         public string Expr7 { get; set; }
         public Nullable<System.DateTime> Expr8 { get; set; }
         public string Expr9 { get; set; }
-        public int ID_Представитель { get; set; }
-        public string Expr1 { get; set; }
-        public string Expr2 { get; set; }
-        public string Expr3 { get; set; }
         public string Номер_телефона { get; set; }
-        public int ID_Группы { get; set; }
         public string Expr10 { get; set; }
-        public string Expr11 { get; set; }
-        public int ID_Сотрудника { get; set; }
-        public string Expr4 { get; set; }
-        public string Должность { get; set; }
+        public int ID_Представитель { get; set; }
+        public int ID_Группы { get; set; }
     }
 }

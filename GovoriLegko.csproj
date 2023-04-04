@@ -129,6 +129,7 @@
     <Compile Include="Recording.xaml.cs">
       <DependentUpon>Recording.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RecordingViewModel.cs" />
     <Compile Include="Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
     </Compile>
