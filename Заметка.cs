@@ -12,23 +12,17 @@ namespace GovoriLegko
     using System;
     using System.Collections.Generic;
     
-    public partial class Представитель
+    public partial class Заметка
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Представитель()
-        {
-            this.Оплата = new HashSet<Оплата>();
-        }
-    
-        public int ID_Представитель { get; set; }
-        public Nullable<int> ID_Клиента { get; set; }
+        public int ID_Заметка { get; set; }
+        public Nullable<int> ID_Сотрудник { get; set; }
+        public Nullable<int> ID_Клиент { get; set; }
         public string Фамилия { get; set; }
         public string Имя { get; set; }
         public string Отчество { get; set; }
-        public string Номер_телефона { get; set; }
+        public string Заметка1 { get; set; }
     
         public virtual Клиент Клиент { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Оплата> Оплата { get; set; }
+        public virtual Сотрудник Сотрудник { get; set; }
     }
 }

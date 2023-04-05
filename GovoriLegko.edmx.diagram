@@ -4,23 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="14526cb11a784a34b518312724934033" Name="Diagram1">
-        <EntityTypeShape EntityType="govorilegkoModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="govorilegkoModel.Users_company" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="govorilegkoModel.Группа" Width="1.5" PointX="1.5" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="govorilegkoModel.Клиент" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="govorilegkoModel.Посещаемость" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="govorilegkoModel.Представитель" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="govorilegkoModel.Распределение" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="govorilegkoModel.Сотрудник" Width="1.5" PointX="1.5" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="govorilegkoModel.Уроки" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="govorilegkoModel.View_1" Width="1.5" PointX="5.75" PointY="8.5" IsExpanded="true" />
+      <Diagram DiagramId="3b7c870efccc4867a5e90ba6d8c95afc" Name="Diagram1">
+        <EntityTypeShape EntityType="govorilegkoModel.sysdiagram" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.Users_company" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.Группа" Width="1.5" PointX="3.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.Заметка" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.Клиент" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.Оплата" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.Посещаемость" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.Представитель" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.Распределение" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.Сотрудник" Width="1.5" PointX="1.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.Уроки" Width="1.5" PointX="3.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="govorilegkoModel.View_1" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="govorilegkoModel.FK_Группа_Сотрудник" ManuallyRouted="false" />
         <AssociationConnector Association="govorilegkoModel.FK_Распределение_Группа" ManuallyRouted="false" />
         <AssociationConnector Association="govorilegkoModel.FK_Уроки_Группа" ManuallyRouted="false" />
+        <AssociationConnector Association="govorilegkoModel.FK_Заметка_Клиент" ManuallyRouted="false" />
+        <AssociationConnector Association="govorilegkoModel.FK_Заметка_Сотрудник" ManuallyRouted="false" />
         <AssociationConnector Association="govorilegkoModel.FK_Посещаемость_Клиент" ManuallyRouted="false" />
         <AssociationConnector Association="govorilegkoModel.FK_Представитель_Клиент" ManuallyRouted="false" />
         <AssociationConnector Association="govorilegkoModel.FK_Распределение_Клиент" ManuallyRouted="false" />
+        <AssociationConnector Association="govorilegkoModel.FK_Оплата_Представитель" ManuallyRouted="false" />
         <AssociationConnector Association="govorilegkoModel.FK_Посещаемость_Уроки" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

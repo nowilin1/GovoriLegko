@@ -20,7 +20,6 @@ namespace GovoriLegko
     /// </summary>
     public partial class AddEditRecording : Page
     {
-        private RecordingViewModel _viewModel = new RecordingViewModel();
         public AddEditRecording()
         {
             InitializeComponent();

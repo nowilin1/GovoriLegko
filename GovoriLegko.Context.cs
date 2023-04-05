@@ -35,7 +35,9 @@ namespace GovoriLegko
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Users_company> Users_company { get; set; }
         public virtual DbSet<Группа> Группа { get; set; }
+        public virtual DbSet<Заметка> Заметка { get; set; }
         public virtual DbSet<Клиент> Клиент { get; set; }
+        public virtual DbSet<Оплата> Оплата { get; set; }
         public virtual DbSet<Посещаемость> Посещаемость { get; set; }
         public virtual DbSet<Представитель> Представитель { get; set; }
         public virtual DbSet<Распределение> Распределение { get; set; }

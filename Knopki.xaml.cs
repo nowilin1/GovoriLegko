@@ -45,5 +45,10 @@ namespace GovoriLegko
         {
             Manager.MainFrame.Navigate(new Schedule());
         }
+
+        private void BtnNote_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Note());
+        }
     }
 }

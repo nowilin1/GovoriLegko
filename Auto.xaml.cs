@@ -76,11 +76,6 @@ namespace GovoriLegko
                     Manager.MainFrame.Navigate(new knopkiadmin());
                     SqlConnection.Close();
                 }
-                else if (Access == manager)
-                {
-                    Manager.MainFrame.Navigate(new knopkiman());
-                    SqlConnection.Close();
-                }
                 else if (Access == sotr)
                 {
                     Manager.MainFrame.Navigate(new Knopki());

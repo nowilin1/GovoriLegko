@@ -17,6 +17,7 @@ namespace GovoriLegko
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Клиент()
         {
+            this.Заметка = new HashSet<Заметка>();
             this.Посещаемость = new HashSet<Посещаемость>();
             this.Представитель = new HashSet<Представитель>();
             this.Распределение = new HashSet<Распределение>();
@@ -30,6 +31,8 @@ namespace GovoriLegko
         public Nullable<System.DateTime> Дата_рождения { get; set; }
         public string Уровень_знаний { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Заметка> Заметка { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Посещаемость> Посещаемость { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

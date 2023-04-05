@@ -36,6 +36,18 @@
           <Property Name="Дата_конца_занятия" Type="datetime" />
           <Property Name="Предмет" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Заметка">
+          <Key>
+            <PropertyRef Name="ID_Заметка" />
+          </Key>
+          <Property Name="ID_Заметка" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Сотрудник" Type="int" />
+          <Property Name="ID_Клиент" Type="int" />
+          <Property Name="Фамилия" Type="nvarchar(max)" />
+          <Property Name="Имя" Type="nvarchar(max)" />
+          <Property Name="Отчество" Type="nvarchar(max)" />
+          <Property Name="Заметка" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Клиент">
           <Key>
             <PropertyRef Name="ID_Клиента" />
@@ -47,6 +59,17 @@
           <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
           <Property Name="Дата_рождения" Type="datetime" />
           <Property Name="Уровень_знаний" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Оплата">
+          <Key>
+            <PropertyRef Name="ID_Оплата" />
+          </Key>
+          <Property Name="ID_Оплата" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Представитель" Type="int" />
+          <Property Name="Сумма" Type="nvarchar(max)" />
+          <Property Name="Номер_карты" Type="nvarchar(max)" />
+          <Property Name="Дата_оплаты" Type="datetime" />
+          <Property Name="Номер_телефона" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Посещаемость">
           <Key>
@@ -126,6 +149,42 @@
             </Principal>
             <Dependent Role="Группа">
               <PropertyRef Name="ID_Сотрудника" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заметка_Клиент">
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="0..1" />
+          <End Role="Заметка" Type="Self.Заметка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Клиент">
+              <PropertyRef Name="ID_Клиента" />
+            </Principal>
+            <Dependent Role="Заметка">
+              <PropertyRef Name="ID_Клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заметка_Сотрудник">
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+          <End Role="Заметка" Type="Self.Заметка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник">
+              <PropertyRef Name="ID_Сотрудника" />
+            </Principal>
+            <Dependent Role="Заметка">
+              <PropertyRef Name="ID_Сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Оплата_Представитель">
+          <End Role="Представитель" Type="Self.Представитель" Multiplicity="0..1" />
+          <End Role="Оплата" Type="Self.Оплата" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Представитель">
+              <PropertyRef Name="ID_Представитель" />
+            </Principal>
+            <Dependent Role="Оплата">
+              <PropertyRef Name="ID_Представитель" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -236,7 +295,9 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users_company" EntityType="Self.Users_company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Группа" EntityType="Self.Группа" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Заметка" EntityType="Self.Заметка" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Клиент" EntityType="Self.Клиент" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Оплата" EntityType="Self.Оплата" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Посещаемость" EntityType="Self.Посещаемость" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Представитель" EntityType="Self.Представитель" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Распределение" EntityType="Self.Распределение" Schema="dbo" store:Type="Tables" />
@@ -259,6 +320,18 @@
           <AssociationSet Name="FK_Группа_Сотрудник" Association="Self.FK_Группа_Сотрудник">
             <End Role="Сотрудник" EntitySet="Сотрудник" />
             <End Role="Группа" EntitySet="Группа" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заметка_Клиент" Association="Self.FK_Заметка_Клиент">
+            <End Role="Клиент" EntitySet="Клиент" />
+            <End Role="Заметка" EntitySet="Заметка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заметка_Сотрудник" Association="Self.FK_Заметка_Сотрудник">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="Заметка" EntitySet="Заметка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Оплата_Представитель" Association="Self.FK_Оплата_Представитель">
+            <End Role="Представитель" EntitySet="Представитель" />
+            <End Role="Оплата" EntitySet="Оплата" />
           </AssociationSet>
           <AssociationSet Name="FK_Посещаемость_Клиент" Association="Self.FK_Посещаемость_Клиент">
             <End Role="Клиент" EntitySet="Клиент" />
@@ -324,6 +397,20 @@
           <NavigationProperty Name="Распределение" Relationship="Self.FK_Распределение_Группа" FromRole="Группа" ToRole="Распределение" />
           <NavigationProperty Name="Уроки" Relationship="Self.FK_Уроки_Группа" FromRole="Группа" ToRole="Уроки" />
         </EntityType>
+        <EntityType Name="Заметка">
+          <Key>
+            <PropertyRef Name="ID_Заметка" />
+          </Key>
+          <Property Name="ID_Заметка" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Сотрудник" Type="Int32" />
+          <Property Name="ID_Клиент" Type="Int32" />
+          <Property Name="Фамилия" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Заметка1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Клиент" Relationship="Self.FK_Заметка_Клиент" FromRole="Заметка" ToRole="Клиент" />
+          <NavigationProperty Name="Сотрудник" Relationship="Self.FK_Заметка_Сотрудник" FromRole="Заметка" ToRole="Сотрудник" />
+        </EntityType>
         <EntityType Name="Клиент">
           <Key>
             <PropertyRef Name="ID_Клиента" />
@@ -335,9 +422,22 @@
           <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Дата_рождения" Type="DateTime" Precision="3" />
           <Property Name="Уровень_знаний" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Заметка" Relationship="Self.FK_Заметка_Клиент" FromRole="Клиент" ToRole="Заметка" />
           <NavigationProperty Name="Посещаемость" Relationship="Self.FK_Посещаемость_Клиент" FromRole="Клиент" ToRole="Посещаемость" />
           <NavigationProperty Name="Представитель" Relationship="Self.FK_Представитель_Клиент" FromRole="Клиент" ToRole="Представитель" />
           <NavigationProperty Name="Распределение" Relationship="Self.FK_Распределение_Клиент" FromRole="Клиент" ToRole="Распределение" />
+        </EntityType>
+        <EntityType Name="Оплата">
+          <Key>
+            <PropertyRef Name="ID_Оплата" />
+          </Key>
+          <Property Name="ID_Оплата" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Представитель" Type="Int32" />
+          <Property Name="Сумма" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_карты" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_оплаты" Type="DateTime" Precision="3" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Представитель" Relationship="Self.FK_Оплата_Представитель" FromRole="Оплата" ToRole="Представитель" />
         </EntityType>
         <EntityType Name="Посещаемость">
           <Key>
@@ -361,6 +461,7 @@
           <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Номер_телефона" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Клиент" Relationship="Self.FK_Представитель_Клиент" FromRole="Представитель" ToRole="Клиент" />
+          <NavigationProperty Name="Оплата" Relationship="Self.FK_Оплата_Представитель" FromRole="Представитель" ToRole="Оплата" />
         </EntityType>
         <EntityType Name="Распределение">
           <Key>
@@ -384,6 +485,7 @@
           <Property Name="Номер_телефона" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Должность" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Группа" Relationship="Self.FK_Группа_Сотрудник" FromRole="Сотрудник" ToRole="Группа" />
+          <NavigationProperty Name="Заметка" Relationship="Self.FK_Заметка_Сотрудник" FromRole="Сотрудник" ToRole="Заметка" />
         </EntityType>
         <EntityType Name="Уроки">
           <Key>
@@ -450,6 +552,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Заметка_Клиент">
+          <End Role="Клиент" Type="Self.Клиент" Multiplicity="0..1" />
+          <End Role="Заметка" Type="Self.Заметка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Клиент">
+              <PropertyRef Name="ID_Клиента" />
+            </Principal>
+            <Dependent Role="Заметка">
+              <PropertyRef Name="ID_Клиент" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Заметка_Сотрудник">
+          <End Role="Сотрудник" Type="Self.Сотрудник" Multiplicity="0..1" />
+          <End Role="Заметка" Type="Self.Заметка" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Сотрудник">
+              <PropertyRef Name="ID_Сотрудника" />
+            </Principal>
+            <Dependent Role="Заметка">
+              <PropertyRef Name="ID_Сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Посещаемость_Клиент">
           <End Role="Клиент" Type="Self.Клиент" Multiplicity="0..1" />
           <End Role="Посещаемость" Type="Self.Посещаемость" Multiplicity="*" />
@@ -486,6 +612,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Оплата_Представитель">
+          <End Role="Представитель" Type="Self.Представитель" Multiplicity="0..1" />
+          <End Role="Оплата" Type="Self.Оплата" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Представитель">
+              <PropertyRef Name="ID_Представитель" />
+            </Principal>
+            <Dependent Role="Оплата">
+              <PropertyRef Name="ID_Представитель" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Посещаемость_Уроки">
           <End Role="Уроки" Type="Self.Уроки" Multiplicity="0..1" />
           <End Role="Посещаемость" Type="Self.Посещаемость" Multiplicity="*" />
@@ -502,7 +640,9 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users_company" EntityType="Self.Users_company" />
           <EntitySet Name="Группа" EntityType="Self.Группа" />
+          <EntitySet Name="Заметка" EntityType="Self.Заметка" />
           <EntitySet Name="Клиент" EntityType="Self.Клиент" />
+          <EntitySet Name="Оплата" EntityType="Self.Оплата" />
           <EntitySet Name="Посещаемость" EntityType="Self.Посещаемость" />
           <EntitySet Name="Представитель" EntityType="Self.Представитель" />
           <EntitySet Name="Распределение" EntityType="Self.Распределение" />
@@ -521,6 +661,14 @@
             <End Role="Группа" EntitySet="Группа" />
             <End Role="Уроки" EntitySet="Уроки" />
           </AssociationSet>
+          <AssociationSet Name="FK_Заметка_Клиент" Association="Self.FK_Заметка_Клиент">
+            <End Role="Клиент" EntitySet="Клиент" />
+            <End Role="Заметка" EntitySet="Заметка" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Заметка_Сотрудник" Association="Self.FK_Заметка_Сотрудник">
+            <End Role="Сотрудник" EntitySet="Сотрудник" />
+            <End Role="Заметка" EntitySet="Заметка" />
+          </AssociationSet>
           <AssociationSet Name="FK_Посещаемость_Клиент" Association="Self.FK_Посещаемость_Клиент">
             <End Role="Клиент" EntitySet="Клиент" />
             <End Role="Посещаемость" EntitySet="Посещаемость" />
@@ -532,6 +680,10 @@
           <AssociationSet Name="FK_Распределение_Клиент" Association="Self.FK_Распределение_Клиент">
             <End Role="Клиент" EntitySet="Клиент" />
             <End Role="Распределение" EntitySet="Распределение" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Оплата_Представитель" Association="Self.FK_Оплата_Представитель">
+            <End Role="Представитель" EntitySet="Представитель" />
+            <End Role="Оплата" EntitySet="Оплата" />
           </AssociationSet>
           <AssociationSet Name="FK_Посещаемость_Уроки" Association="Self.FK_Посещаемость_Уроки">
             <End Role="Уроки" EntitySet="Уроки" />
@@ -619,6 +771,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Заметка">
+            <EntityTypeMapping TypeName="govorilegkoModel.Заметка">
+              <MappingFragment StoreEntitySet="Заметка">
+                <ScalarProperty Name="ID_Заметка" ColumnName="ID_Заметка" />
+                <ScalarProperty Name="ID_Сотрудник" ColumnName="ID_Сотрудник" />
+                <ScalarProperty Name="ID_Клиент" ColumnName="ID_Клиент" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Заметка1" ColumnName="Заметка" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Клиент">
             <EntityTypeMapping TypeName="govorilegkoModel.Клиент">
               <MappingFragment StoreEntitySet="Клиент">
@@ -629,6 +794,18 @@
                 <ScalarProperty Name="Отчество" ColumnName="Отчество" />
                 <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
                 <ScalarProperty Name="Уровень_знаний" ColumnName="Уровень_знаний" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Оплата">
+            <EntityTypeMapping TypeName="govorilegkoModel.Оплата">
+              <MappingFragment StoreEntitySet="Оплата">
+                <ScalarProperty Name="ID_Оплата" ColumnName="ID_Оплата" />
+                <ScalarProperty Name="ID_Представитель" ColumnName="ID_Представитель" />
+                <ScalarProperty Name="Сумма" ColumnName="Сумма" />
+                <ScalarProperty Name="Номер_карты" ColumnName="Номер_карты" />
+                <ScalarProperty Name="Дата_оплаты" ColumnName="Дата_оплаты" />
+                <ScalarProperty Name="Номер_телефона" ColumnName="Номер_телефона" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

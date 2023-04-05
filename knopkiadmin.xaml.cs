@@ -59,5 +59,15 @@ namespace GovoriLegko
         {
             Manager.MainFrame.Navigate(new AddEditRecording());
         }
+
+        private void BtnPayment_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Payment());
+        }
+
+        private void BtnPayments_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Payments());
+        }
     }
 }

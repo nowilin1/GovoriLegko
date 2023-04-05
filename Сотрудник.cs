@@ -18,6 +18,7 @@ namespace GovoriLegko
         public Сотрудник()
         {
             this.Группа = new HashSet<Группа>();
+            this.Заметка = new HashSet<Заметка>();
         }
     
         public int ID_Сотрудника { get; set; }
@@ -30,5 +31,7 @@ namespace GovoriLegko
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Группа> Группа { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Заметка> Заметка { get; set; }
     }
 }
